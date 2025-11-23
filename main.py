@@ -8,18 +8,14 @@ from tkinter import messagebox
 from datetime import datetime
 import subprocess # To open folders
 
-# ==========================================
-# CONFIGURATION
-# ==========================================
+
 NOD_THRESHOLD = 40  
 SAFETY_SCORE_MAX = 100
 PENALTY_RATE = 2   
 RECOVERY_RATE = 1  
 DARKNESS_LIMIT = 60 
 
-# ==========================================
-# 1. THE DETECTION ENGINE (Backend)
-# ==========================================
+
 
 def save_evidence(frame, score):
     """Saves photo and log WITHOUT connecting to internet"""
@@ -72,7 +68,7 @@ def draw_static_dashboard(frame, width, height, current_score):
     cv2.putText(frame, "HP", (25, start_y + 20), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1)
 
 def start_monitoring():
-    """The Main Loop"""
+   
     
     if not os.path.exists('haarcascade_frontalface_default.xml'):
         messagebox.showerror("Error", "Missing XML file! Please download 'haarcascade_frontalface_default.xml'")
@@ -158,10 +154,7 @@ def start_monitoring():
     cap.release()
     cv2.destroyAllWindows()
 
-# ==========================================
-# 2. LAUNCHER GUI
-# ==========================================
-def open_folder():
+
     if not os.path.exists('evidence'):
         os.makedirs('evidence')
     os.startfile('evidence')
@@ -186,4 +179,5 @@ def create_gui():
     root.mainloop()
 
 if __name__ == "__main__":
+
     create_gui()
